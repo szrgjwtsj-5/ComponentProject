@@ -1,0 +1,5 @@
+rootProject.name='ComponentProject'
+include ':app'
+include ':baselib'
+include ':commonui'
+include ':route'

@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.objectbox'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api "androidx.appcompat:appcompat:$androidx_version"
+    api "androidx.core:core-ktx:$ktx_version"
+    api "androidx.recyclerview:recyclerview:$androidx_version"
+    api "androidx.constraintlayout:constraintlayout:$constraint_version"
+
+    // coroutine ktx
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutine_ktx_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$coroutine_ktx_version"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$coroutine_ktx_version"
+
+    // ViewPager2
+    api "androidx.viewpager2:viewpager2:$viewpage2_version"
+    // material design
+    api "com.google.android.material:material:$material_version"
+
+    // ViewModel and LiveData
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    // glide
+    api "com.github.bumptech.glide:glide:$glide_version"
+    implementation("com.github.bumptech.glide:okhttp-integration:$glide_version") {
+        transitive = false
+    }
+    // Retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // mmkv
+    api "com.tencent:mmkv-static:$mmkv_version"
+    // leakcanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanary_version}"
+    //Arouter
+//    api "com.alibaba:arouter-api:${arouter_version}"
+//    kapt "com.alibaba:arouter-compiler:${arouter_compiler_version}"
+
+    // xlog
+    api "com.tencent.mars:mars-xlog:${xlog_version}"
+    // immersionbar
+    api "com.gyf.immersionbar:immersionbar:${immersionbar_version}"
+    //汉字转拼音
+//    api "com.github.open-android:pinyin4j:${pinyin4j_version}"
+}
